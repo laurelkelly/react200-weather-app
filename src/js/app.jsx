@@ -15,7 +15,7 @@ class App extends React.Component {
         <div className='jumbotron'>
           <h1 className='display-4'>Origin Weather Application</h1>
           <p className='lead'>Always know if you'll need an umbrella!</p>
-          <p>Test Heroku deployment yet again</p>
+          <p>Heroku deployment test</p>
         </div>
         <div className='row'>
           <div className='col-12'>
