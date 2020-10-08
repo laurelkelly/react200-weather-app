@@ -28,7 +28,7 @@ describe('express', function () {
   //     .evaluate(() => document.querySelector('body').innerText)
   //     .end()
   //     .then((text) => {
-  //       expect(text).to.contain('Budget Tracker');
+  //       expect(text).to.contain('Weather App');
   //     })
   // );
 
