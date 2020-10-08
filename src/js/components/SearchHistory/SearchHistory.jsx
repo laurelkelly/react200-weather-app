@@ -2,34 +2,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class SearchHistory extends React.Component {
-    render() {
-        return (
-            <div className='card border-info mb-3'>
-              <div className='card-header text-white bg-info'>Search History</div>
-              <div className='card-body'>
-                <table className='table table-striped'>
-                  <tbody>
-                    <tr>
-                      <td>San Diego</td>
-                      <td> </td>
-                      <td>10/05/2020<br/>11:15:36</td>
-                    </tr>
-                    <tr>
-                      <td>New York</td>
-                      <td> </td>
-                      <td>10/05/2020<br/>11:15:36</td>
-                    </tr>
-                    <tr>
-                      <td>Washington D.C.</td>
-                      <td> </td>
-                      <td>10/05/2020<br/>11:15:36</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+
+  }
+
+  render() {
+    let searchData = this.props.city.weatherHistory;  // empty array
+    return (
+      <div className='card border-info mb-3'>
+        <div className='card-header text-white bg-info'>Search History</div>
+        <div className='card-body'>
+          <table className='table table-striped'>
+            <tbody>
+              { searchData.map((eachCity, index) => {
+              return (
+                <tr key={index}>
+                  <td>{ eachCity.weatherData.name }</td>
+                  <td> </td>
+                  <td>{ eachCity.searchDate }<br/>{ eachCity.searchTime }</td>
+                </tr>)}
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStoreToProps = (store) => {

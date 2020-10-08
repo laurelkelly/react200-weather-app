@@ -2,36 +2,31 @@ const axios = require('axios');
 
 // Action Creators
 
-// export function updateCityDescription(description) {
-//     return {
-//         type: 'UPDATE_CITY_DESCRIPTION',
-//         payload: { description }
-//     };
-// }
-
-export const updateCityDescription = (cityName) => ({  //passing in event.target.value here
-    type: 'UPDATE_CITY_DESCRIPTION',
+export const updateCityName = (cityName) => ({  //passing in event.target.value here
+    type: 'UPDATE_CITY_NAME',
     payload: { cityName }
 });
 
-export const getWeather = (userInput) => {
-    // console.log(userInput);
-    return {
-        type: 'GET_WEATHER',
-        payload: fetch(`/search/${userInput}`)
-            .then(response => {
-                console.log(response);
-                return {
-                    weatherData: response.data,
-                    receivedAt: Date.now()
-                }
-            })
-        .catch((error) => {
-            console.log(error)
-            return {
-                weatherData: error,
-            }
-        })
-    }
-};
+export const getWeather = (userInput) => ({
+    type: 'GET_WEATHER',
+    payload: axios.get(`/search/${userInput}`).then((res) => {
+        // console.log(`Response: `, res.data);
+        const timeElapsed = Date.now();
+        const today = new Date(timeElapsed);
+        const localDate = today.toLocaleDateString();
+        const localTime = today.toLocaleTimeString();
+        return {
+            data: res.data,
+            searchDate: localDate,
+            searchTime: localTime
+        };
+    })
+    .catch((err) => {
+        console.log(`Error:`, err);
+    })
+});
 
+//CARS
+    //Component captures the input and dispatches it to the Actions (with the dispatch function)
+    //Actions export the data to the Reducer
+    //Reducer sets State in the Store with the new values
