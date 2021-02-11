@@ -14,7 +14,7 @@ class App extends React.Component {
       <div className='container'>
         <div className='jumbotron'>
           <h1 className='display-4'>Origin Weather Application</h1>
-          <p className='lead'>Always know if you'll need an umbrella! Test</p>
+          <p className='lead'>Always know if you'll need an umbrella!</p>
         </div>
         <div className='row'>
           <div className='col-12'>
